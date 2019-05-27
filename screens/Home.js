@@ -1,5 +1,8 @@
 import React from 'react';
 import styles from '../styles'
+import { SafeAreaView } from 'react-navigation';
+import { connect } from 'react-redux';
+import { login } from '../redux/actions'
 
 import {
     Text,
@@ -9,15 +12,25 @@ import {
 class Home extends React.Component {
     state = {}
 
-    componentWillMount() { }
+    componentWillMount() {
+        this.props.dispatch(login())
+    }
 
     render() {
         return (
-            <View>
-                <Text>Home</Text>
-            </View>
+            <SafeAreaView>
+                <View>
+                    <Text styles={styles.container}>{this.props.user}</Text>
+                </View>
+            </SafeAreaView>
         )
     }
 }
 
-export default Home;
+function mapStateToProps(state) {
+    return {
+        user: state.user
+    };
+}
+
+export default connect(mapStateToProps)(Home);

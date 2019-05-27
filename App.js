@@ -1,14 +1,21 @@
 import React from 'react';
-import styles from './styles';
+import thunkMiddleware from 'redux-thunk';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+
 import RootNavigator from './navigation/RootNavigator';
-import { 
-  View
-} from 'react-native';
+import reducers from './redux/reducers';
+import styles from './styles';
+
+const middleware = applyMiddleware(thunkMiddleware)
+const store = createStore(reducers, middleware);
 
 export default class App extends React.Component {
   render() {
     return (
-        <RootNavigator/>
+        <Provider store={store}>
+          <RootNavigator />
+        </Provider>
     );
   }
 }

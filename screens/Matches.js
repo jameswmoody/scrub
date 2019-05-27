@@ -1,4 +1,5 @@
 import React from 'react';
+import { SafeAreaView } from 'react-navigation';
 import styles from '../styles'
 
 import {
@@ -13,9 +14,11 @@ class Matches extends React.Component {
 
     render() {
         return (
-            <View>
-                <Text>Matches</Text>
-            </View>
+            <SafeAreaView>
+                <View>
+                    <Text>Matches</Text>
+                </View>
+            </SafeAreaView>
         )
     }
 }
