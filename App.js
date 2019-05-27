@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './styles';
-import Home from './screens/Home';
+import RootNavigator from './navigation/RootNavigator';
 import { 
   View
 } from 'react-native';
@@ -8,9 +8,7 @@ import {
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Home/>
-      </View>
+        <RootNavigator/>
     );
   }
 }
