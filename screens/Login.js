@@ -2,6 +2,7 @@ import React from 'react';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
 import * as firebase from 'firebase';
+import { FB_KEY } from 'react-native-dotenv'
 
 import RootNavigator from '../navigation/RootNavigator';
 import styles from '../styles';
@@ -23,14 +24,14 @@ class Login extends React.Component {
     componentWillMount() {
         firebase.auth().onAuthStateChanged((user) => {
             if (user != null) {
-                this.props.dispatch(login(true));
+                this.props.dispatch(login(user));
                 this.setState({ loggedIn: true });
             }
         });
     }
 
     login = async () => {
-        const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync('2057879181175343', {
+        const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync(FB_KEY, {
             permissions: ['public_profile'],
         });
         if (type === 'success') {
