@@ -1,26 +1,27 @@
 import React from 'react';
-import styles from '../styles'
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
-import { login } from '../redux/actions'
+
+import styles from '../styles'
 
 import {
     Text,
-    View
+    View,
+    Alert
 } from 'react-native';
 
 class Home extends React.Component {
     state = {}
 
     componentWillMount() {
-        this.props.dispatch(login())
+
     }
 
     render() {
         return (
             <SafeAreaView>
                 <View>
-                    <Text styles={styles.container}>{this.props.user}</Text>
+                    <Text styles={styles.container}>Home</Text>
                 </View>
             </SafeAreaView>
         )
@@ -29,7 +30,7 @@ class Home extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        user: state.user
+        loggedIn: state.loggedIn
     };
 }
 
