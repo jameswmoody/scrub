@@ -40,7 +40,7 @@ class Login extends React.Component {
 
             // Sign in with credential from the Facebook user
             firebase.auth().signInWithCredential(credential).catch((error) => {
-                Alert.alert("Login failed")
+                Alert.alert('Login failed');
             });
         }
     }

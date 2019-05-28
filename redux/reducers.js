@@ -18,6 +18,9 @@ export default reducers = (state = {
     switch (action.type) {
         case 'LOGIN': {
             return { ...state, user: action.user, loggedIn: action.loggedIn }
+        } 
+        case 'UPLOAD_IMAGES': {
+            return { ...state, user: { ...state, images: action.payload } }
         }
     }
     return state;
