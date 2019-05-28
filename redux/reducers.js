@@ -2,8 +2,9 @@ export default reducers = (state = {
     loggedIn: false,
     user: {
         id: '',
-        photoUrl: '',
+        photoUrl: 'https://default.com',
         name: '',
+        age: '',
         aboutMe: '',
         chats: '',
         geocode: '',
@@ -21,6 +22,9 @@ export default reducers = (state = {
         } 
         case 'UPLOAD_IMAGES': {
             return { ...state, user: { ...state, images: action.payload } }
+        }
+        case 'UPDATE_ABOUT': {
+            return { ...state, user: { ...state.user, aboutMe: action.payload } }
         }
     }
     return state;
