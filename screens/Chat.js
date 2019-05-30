@@ -1,5 +1,7 @@
 import React from 'react';
 import { SafeAreaView } from 'react-navigation';
+import { connect } from 'react-redux';
+
 import styles from '../styles'
 
 import {
@@ -14,7 +16,7 @@ class Chat extends React.Component {
 
     render() {
         return (
-            <SafeAreaView>
+            <SafeAreaView style={[styles.container]}>
                 <View>
                     <Text>Chat</Text>
                 </View>
@@ -23,4 +25,4 @@ class Chat extends React.Component {
     }
 }
 
-export default Chat;
+export default connect(mapStateToProps)(Chat);

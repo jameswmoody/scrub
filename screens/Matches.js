@@ -14,7 +14,7 @@ class Matches extends React.Component {
 
     render() {
         return (
-            <SafeAreaView>
+            <SafeAreaView style={[styles.container]}>
                 <View>
                     <Text>Matches</Text>
                 </View>

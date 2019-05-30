@@ -6,8 +6,7 @@ import styles from '../styles'
 
 import {
     Text,
-    View,
-    Alert
+    View
 } from 'react-native';
 
 class Home extends React.Component {
@@ -19,9 +18,9 @@ class Home extends React.Component {
 
     render() {
         return (
-            <SafeAreaView>
+            <SafeAreaView style={[styles.container]}>
                 <View>
-                    <Text styles={styles.container}>Home</Text>
+                    <Text styles={styles.container}>Explore</Text>
                 </View>
             </SafeAreaView>
         )

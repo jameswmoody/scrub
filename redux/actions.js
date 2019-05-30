@@ -11,11 +11,12 @@ export function login(user) {
     return function (dispatch) {
         let params = {
             id: user.uid,
-            photoUrl: user.photoURL,
+            photoUrl: user.photoURL + '?height=500',
             name: user.displayName,
-            aboutMe: ' ',
-            chats: ' ',
-            geocode: ' ',
+            age: 29,
+            aboutMe: '',
+            chats: '',
+            geocode: '',
             images: [user.photoURL],
             notification: false,
             show: false,
@@ -38,7 +39,7 @@ export function login(user) {
 } 
 
 export function imageUpload (images) {
-    function imageHandler() {
+    function imageHandler(dispatch) {
         ImagePicker
             .launchImageLibraryAsync({ allowsEditing: false })
             .then(function (result) {
@@ -77,12 +78,42 @@ export function imageUpload (images) {
         if (permission.status !== 'granted') {
             const newPermission = await Permissions.askAsync(Permissions.CAMERA_ROLL);
             if (newPermission.status === 'granted') {
-                imageHandler();
+                imageHandler(dispatch);
             } else {
                 Alert.alert('Unable to gain permission to access cammera roll');
             }
         } else {
-            imageHandler();
+            imageHandler(dispatch);
         }
+    }
+}
+
+export function deleteImage(images, key) {
+    return function (dispatch) {
+        Alert.alert(
+            'Are you sure you want to Delete',
+            '',
+            [
+                {
+                    text: 'Ok', onPress: () => {
+                        var array = images
+                        array.splice(key, 1)
+                        dispatch({ type: 'UPLOAD_IMAGES', payload: array });
+                        firebase.database().ref('cards/' + firebase.auth().currentUser.uid + '/images').set(array);
+                    }
+                },
+                { text: 'Cancel', onPress: () => console.log('Cancel Pressed') },
+            ],
+            { cancelable: true }
+        )
+    }
+}
+
+export function updateAbout(value) {
+    return function (dispatch) {
+        dispatch({ type: 'UPDATE_ABOUT', payload: value });
+        setTimeout(function () {
+            firebase.database().ref('cards/' + firebase.auth().currentUser.uid).update({ aboutMe: value });
+        }, 3000);
     }
 }

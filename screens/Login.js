@@ -52,7 +52,7 @@ class Login extends React.Component {
             )
         } else {
             return (
-                <SafeAreaView>
+                <SafeAreaView style={[styles.container]}>
                     <View styles={styles.container}>
                         <TouchableOpacity onPress={this.login.bind(this)}>
                             <Text>Login</Text>
