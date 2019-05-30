@@ -1,18 +1,31 @@
 import React from 'react';
 import { Text } from "react-native";
-import { createBottomTabNavigator } from 'react-navigation';
+import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import Home from '../screens/Home';
 import Profile from '../screens/Profile';
+import Edit from '../screens/Edit';
 import Matches from '../screens/Matches';
 import styles from '../styles'
+
+const ProfileStack = createStackNavigator ({
+    Profile: {
+        screen: Profile,
+        navigationOptions: {
+            header: null
+        }
+    },
+    Edit: Edit,
+});
+
 
 export default createBottomTabNavigator (
     {
         Profile: {
-            screen: Profile,
+            screen: ProfileStack,
             navigationOptions: {
+                header: null,
                 tabBarIcon: ({ focused }) => {
                     const color = focused ? '#FFFFFF' : '#ae9eff';
                     return (
@@ -21,7 +34,7 @@ export default createBottomTabNavigator (
                         </Text>
                     );
                 }
-            },
+            }
         },
         Home: {
             screen: Home,

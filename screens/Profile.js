@@ -21,6 +21,7 @@ class Profile extends React.Component {
     }
 
     render() {
+        const { navigate } = this.props.navigation;
         return (
             <ScrollView style={[styles.main]}>
                     <View style={[styles.container]}>
@@ -28,11 +29,13 @@ class Profile extends React.Component {
                         <View style={styles.profile}>
                             <Text style={styles.header1}>{this.props.user.name}</Text>
                             <Text style={styles.header3}>{this.props.user.age} - {this.props.user.location}</Text>
-                            <Text style={styles.header2}>About</Text>
+                            <View
+                                style={styles.horizontalLine}
+                            />
                             <Text style={[styles.paragraph, styles.italic]}>{this.props.user.aboutMe}</Text>
                         </View>
-                        <TouchableOpacity style={styles.button} onPress={null}>
-                        <Text style={styles.buttonText}>Edit</Text>
+                        <TouchableOpacity style={styles.button} onPress={() => navigate('Edit')}>
+                            <Text style={styles.buttonText}>Edit</Text>
                         </TouchableOpacity>
                     </View>
                 </ScrollView>
