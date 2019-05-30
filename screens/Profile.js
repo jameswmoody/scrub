@@ -23,9 +23,21 @@ class Profile extends React.Component {
     render() {
         const { navigate } = this.props.navigation;
         return (
-            <ScrollView style={[styles.main]}>
+            <ScrollView style={[styles.main]} bounces={false}>
                     <View style={[styles.container]}>
-                        <Image style={styles.profileImg} source={{ uri: this.props.user.photoUrl + '?height=500'}} />
+                        <ScrollView
+                            ref={(scrollView) => { _scrollView = scrollView; }}
+                            horizontal={true}
+                            showsHorizontalScrollIndicator={false}
+                            bounces={false}
+                            pagingEnabled={true}
+                        >
+                            {this.props.user.images.map((uri, index) => {
+                                return (
+                                    <Image key={index} style={styles.profileImg} source={{uri}} />
+                                );
+                            })}
+                        </ScrollView>
                         <View style={styles.profile}>
                             <Text style={styles.header1}>{this.props.user.name}</Text>
                             <Text style={styles.header3}>{this.props.user.age} - {this.props.user.location}</Text>
