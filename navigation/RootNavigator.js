@@ -5,8 +5,8 @@ import TabNavigator from './TabNavigator';
 const RootStackNavigator = createStackNavigator(
     {
         Main: {
-            screen: TabNavigator,
-        },
+            screen: TabNavigator
+        }
     }
 );
 
