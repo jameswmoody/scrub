@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 50,
-        marginTop: 18,
+        margin: 18,
         padding: 20,
         width: deviceWidth * .3,
         backgroundColor: '#12ede1'
@@ -67,6 +67,21 @@ const styles = StyleSheet.create({
     // Navigation
     iconMenu: {
         height: 12
+    },
+    // Login
+    login: {
+        backgroundColor: '#6344FF'
+    },
+    fbLoginText: {
+        fontSize: 16,
+        color: '#FFFFFF'
+    },
+    fbLoginButton: {
+        width: deviceWidth * .6,
+        height: 40,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#6586ce'
     },
     // Profile
     profile: {

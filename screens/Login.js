@@ -1,8 +1,8 @@
 import React from 'react';
-import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
 import * as firebase from 'firebase';
 import { FB_KEY } from 'react-native-dotenv'
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import RootNavigator from '../navigation/RootNavigator';
 import styles from '../styles';
@@ -52,13 +52,13 @@ class Login extends React.Component {
             )
         } else {
             return (
-                <SafeAreaView style={[styles.container]}>
-                    <View styles={styles.container}>
-                        <TouchableOpacity onPress={this.login.bind(this)}>
-                            <Text>Login</Text>
-                        </TouchableOpacity>
-                    </View>
-                </SafeAreaView>
+                <View style={[styles.container, styles.login]}>
+                    <TouchableOpacity style={styles.fbLoginButton} onPress={this.login.bind(this)}>
+                        <Text style={styles.fbLoginText}>
+                            <Icon style={styles.fbLoginText} name="facebook-f"/>   Login with Facebook!
+                        </Text>
+                    </TouchableOpacity>
+                </View>
             )
         }
     }

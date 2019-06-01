@@ -16,7 +16,7 @@ const ProfileStack = createStackNavigator ({
             header: null
         }
     },
-    Edit: Edit,
+    Edit: Edit
 });
 
 
@@ -63,7 +63,7 @@ export default createBottomTabNavigator (
                 },
                 tabBarLabel: 'Matches'
             },
-        },
+        }
     },
     {
         navigationOptions: {

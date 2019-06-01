@@ -1,6 +1,7 @@
 import * as firebase from 'firebase';
 import { ImagePicker, Permissions } from 'expo';
 import { RNS3 } from 'react-native-aws3';
+import { NavigationActions } from 'react-navigation';
 import {
     Alert
 } from 'react-native';
@@ -36,7 +37,14 @@ export function login(user) {
             }
         })
     }
-} 
+}
+
+export function logout(){
+	return function(dispatch) {
+        firebase.auth().signOut()
+        dispatch({ type: 'LOGOUT', loggedIn: false });
+   }
+}
 
 export function imageUpload (images) {
     function imageHandler(dispatch) {
