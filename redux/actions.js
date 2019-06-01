@@ -1,24 +1,23 @@
 import * as firebase from 'firebase';
 import { ImagePicker, Permissions } from 'expo';
 import { RNS3 } from 'react-native-aws3';
-import { NavigationActions } from 'react-navigation';
 import {
     Alert
 } from 'react-native';
 
 import aws from '../config/aws';
 
-export function login(user) { 
+export function login (user) { 
     return function (dispatch) {
         let params = {
             id: user.uid,
-            photoUrl: user.photoURL + '?height=500',
+            photoUrl: `${user.photoURL}?height=500`,
             name: user.displayName,
             age: 29,
             aboutMe: '',
             chats: '',
             geocode: '',
-            images: [user.photoURL],
+            images: [`${user.photoURL}?height=500`],
             notification: false,
             show: false,
             report: false,
@@ -39,11 +38,25 @@ export function login(user) {
     }
 }
 
-export function logout(){
+export function logout () {
 	return function(dispatch) {
         firebase.auth().signOut()
         dispatch({ type: 'LOGOUT', loggedIn: false });
    }
+}
+
+export function getCards() {
+    return function (dispatch) {
+        firebase.database().ref('cards').once('value', (snap) => {
+            var items = [];
+            snap.forEach((child) => {
+                item = child.val();
+                item.id = child.key;
+                items.push(item);
+            });
+            dispatch({ type: 'GET_CARDS', payload: items });
+        });
+    }
 }
 
 export function imageUpload (images) {
@@ -96,7 +109,7 @@ export function imageUpload (images) {
     }
 }
 
-export function deleteImage(images, key) {
+export function deleteImage (images, key) {
     return function (dispatch) {
         Alert.alert(
             'Are you sure you want to Delete',
@@ -117,7 +130,7 @@ export function deleteImage(images, key) {
     }
 }
 
-export function updateAbout(value) {
+export function updateAbout (value) {
     return function (dispatch) {
         dispatch({ type: 'UPDATE_ABOUT', payload: value });
         setTimeout(function () {
