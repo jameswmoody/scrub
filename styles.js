@@ -4,6 +4,22 @@ const Dimensions = require('Dimensions');
 const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
 
+// Colors
+const PRIMARY_COLOR = '#6344FF';
+const SECONDARY_COLOR = '#12EDE1';
+const PRIMARY_BACKGROUND_COLOR = '#EAEAEA';
+const PRIMARY_FONT_COLOR = '#5B5B5B';
+const SECONDARY_FONT_COLOR = '#919191';
+const FB_COLOR = '#6586CE';
+const WHITE = '#FFFFFF';
+const BLACK = '#000000';
+
+// Effects
+const SHADOW_EFFECT = {
+    shadowRadius: 20,
+    shadowColor: BLACK
+};
+
 const styles = StyleSheet.create({
     // Alignment
     alignRightText: {
@@ -12,11 +28,11 @@ const styles = StyleSheet.create({
     },
     // Element Styling
     main: {
-        backgroundColor: '#eaeaea',
+        backgroundColor: PRIMARY_BACKGROUND_COLOR,
     },
     container: {
         flex: 1,
-        backgroundColor: '#eaeaea',
+        backgroundColor: PRIMARY_BACKGROUND_COLOR,
         alignItems: 'center',
         justifyContent: 'center'
     },
@@ -27,10 +43,10 @@ const styles = StyleSheet.create({
         margin: 18,
         padding: 20,
         width: deviceWidth * .3,
-        backgroundColor: '#12ede1'
+        backgroundColor: SECONDARY_COLOR
     },
     buttonText: {
-        color: '#FFFFFF',
+        color: WHITE,
         textTransform: 'uppercase',
         fontWeight: 'bold'
     },
@@ -40,25 +56,25 @@ const styles = StyleSheet.create({
         width: 20
     },
     header1: {
-        paddingTop: 30,
+        paddingTop: 20,
         fontSize: 28,
-        color: '#5b5b5b',
+        color: PRIMARY_FONT_COLOR ,
         fontWeight: 'bold'
     },
     header2: {
         fontSize: 18,
-        color: '#5b5b5b',
+        color: PRIMARY_FONT_COLOR ,
         fontWeight: 'bold'
     },
     header3: {
         padding: 10,
-        color: '#919191',
+        color: SECONDARY_FONT_COLOR,
         fontSize: 12
     },
     paragraph: {
         padding: 20,
         paddingTop: 10,
-        color: '#919191',
+        color: SECONDARY_FONT_COLOR,
         fontSize: 16
     },
     italic: {
@@ -70,41 +86,95 @@ const styles = StyleSheet.create({
     },
     // Login
     login: {
-        backgroundColor: '#6344FF'
+        backgroundColor: PRIMARY_COLOR
     },
     fbLoginText: {
         fontSize: 16,
-        color: '#FFFFFF'
+        color: WHITE
     },
     fbLoginButton: {
         width: deviceWidth * .6,
         height: 40,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#6586ce'
+        backgroundColor: FB_COLOR
     },
-    // Profile
-    profile: {
-        backgroundColor: '#FFFFFF',
+    // Explore
+    card: {
+        backgroundColor: WHITE,
+        alignItems: 'center',
+        height: deviceHeight * .7,
+        width: deviceWidth * .8,
+        width: '100%',
+        borderRadius: 15,
+        overflow: 'hidden',
+    },
+    cardShadow: {
+        shadowOpacity: 0.05,
+        ...SHADOW_EFFECT
+    },
+    cardImage: {
+        height: deviceHeight * .35,
+        width: deviceWidth * .88
+    },
+    infoPill: {
         zIndex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        shadowOpacity: 0.3,
-        shadowRadius: 20,
-        shadowColor: '#000',
-        shadowOffset: { height: 0, width: 0 },
+        borderRadius: 50,
+        marginTop: -14,
+        padding: 4,
+        backgroundColor: PRIMARY_COLOR
+    },
+    infoPillText: {
+        color: WHITE,
+        paddingLeft: 10,
+        paddingRight: 10
+    },
+    matchButton: {
+        height: 80,
+        width: 80,
+        margin: 20,
+        marginTop: 10,
+        backgroundColor: WHITE,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 50,
+        shadowOpacity: 0.15,
+        ...SHADOW_EFFECT
+    },
+    likeIcon: {
+        fontSize: 40,
+        color: SECONDARY_COLOR
+    },
+    dislikeIcon: {
+        fontSize: 40,
+        color: '#dc3545'
+    },
+    noCards: {
+        zIndex: -1,
+        height: deviceHeight/2
+    },
+    // Profile
+    profile: {
+        backgroundColor: WHITE,
+        zIndex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
         marginTop: -80,
         borderRadius: 15,
         width: deviceWidth * .8,
+        shadowOpacity: 0.3,
+        ...SHADOW_EFFECT
     },
     profileImg: {
         width: deviceWidth,
-        height: deviceHeight*.6,
+        height: deviceHeight*.6
     },
     textInput: {
         width: deviceWidth,
         padding: 15,
-        backgroundColor: '#fff',
+        backgroundColor: WHITE,
         height: 100
     },
     // Edit
@@ -113,7 +183,7 @@ const styles = StyleSheet.create({
         height: 90,
         borderRadius: 45,
         margin: 10,
-        backgroundColor: '#fff',
+        backgroundColor: WHITE,
     },
     imgRow: {
         flexWrap: 'wrap',
@@ -123,7 +193,7 @@ const styles = StyleSheet.create({
     textInput: {
         width: deviceWidth,
         padding: 15,
-        backgroundColor: '#fff',
+        backgroundColor: WHITE,
         height: 100
     },
     inner: {

@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import { imageUpload, deleteImage, updateAbout } from '../redux/actions';
 import styles from '../styles'
 
@@ -47,7 +46,7 @@ class Edit extends React.Component {
                             <TouchableOpacity style={styles.button} onPress={this.addImage.bind(this)}>
                                 <Text style={styles.buttonText}>Add</Text>
                             </TouchableOpacity>
-                            <Text style={[styles.paragraph, styles.italic, styles.alignRightText]}>{this.props.user.aboutMe && this.props.user.aboutMe.length}/140</Text>
+                            <Text style={[styles.paragraph, styles.italic, styles.alignRightText]}>{(this.props.user.aboutMe && this.props.user.aboutMe.length) || 0}/140</Text>
                             <TextInput
                                 style={styles.textInput}
                                 multiline={true}

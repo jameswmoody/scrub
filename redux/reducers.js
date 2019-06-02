@@ -1,5 +1,6 @@
 export default reducers = (state = {
     loggedIn: false,
+    cards: [],
     user: {
         id: '',
         photoUrl: 'https://default.com',
@@ -23,6 +24,8 @@ export default reducers = (state = {
         case 'LOGOUT': {
             return { ...state, loggedIn: action.loggedIn }
         }
+        case 'GET_CARDS':
+            return { ...state, cards: action.payload }
         case 'UPLOAD_IMAGES': {
             return { ...state, user: { ...state.user, images: action.payload } }
         }
