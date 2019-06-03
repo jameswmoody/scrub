@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 
 import { imageUpload, deleteImage, logout } from '../redux/actions';
+import { getAge } from '../redux/helpers';
 import styles from '../styles'
 
 class Profile extends React.Component {
@@ -22,6 +23,7 @@ class Profile extends React.Component {
 
     render() {
         const { navigate } = this.props.navigation;
+        const userAge = getAge(this.props.user.birthday);
         return (
             <ScrollView style={[styles.main]} bounces={false}>
                 <View style={[styles.container]}>
@@ -40,7 +42,7 @@ class Profile extends React.Component {
                     </ScrollView>
                     <View style={styles.profile}>
                         <Text style={styles.header1}>{this.props.user.name}</Text>
-                        <Text style={styles.header3}>{this.props.user.age} - {this.props.user.location}</Text>
+                        <Text style={styles.header3}>{userAge} - {this.props.user.location}</Text>
                         <View
                             style={styles.horizontalLine}
                         />

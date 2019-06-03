@@ -5,7 +5,7 @@ export default reducers = (state = {
         id: '',
         photoUrl: 'https://default.com',
         name: '',
-        age: '',
+        birthday: '',
         aboutMe: '',
         chats: '',
         geocode: '',

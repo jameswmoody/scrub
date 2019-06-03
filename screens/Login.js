@@ -24,6 +24,7 @@ class Login extends React.Component {
     componentWillMount() {
         firebase.auth().onAuthStateChanged((user) => {
             if (user != null) {
+                user.birthday = this.state.birthday;
                 this.props.dispatch(login(user));
                 this.setState({ loggedIn: true });
             }
@@ -32,16 +33,18 @@ class Login extends React.Component {
 
     login = async () => {
         const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync(FB_KEY, {
-            permissions: ['public_profile'],
+            permissions: ['public_profile', 'user_birthday'],
         });
         if (type === 'success') {
-            // Build Firebase credential with the Facebook access token.
             const credential = await firebase.auth.FacebookAuthProvider.credential(token);
-
-            // Sign in with credential from the Facebook user
-            firebase.auth().signInWithCredential(credential).catch((error) => {
-                Alert.alert('Login failed');
-            });
+            firebase.auth().signInWithCredential(credential)
+                .then((response) => {
+                    const birthday = response.additionalUserInfo.profile.birthday;
+                    this.setState({ birthday });
+                })
+                .catch((error) => {
+                    Alert.alert('Login failed');
+                });
         }
     }
  
