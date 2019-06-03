@@ -4,7 +4,8 @@ import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import styles from '../styles'
+import { getAge } from '../redux/helpers';
+import styles from '../styles';
 
 import {
     Text,
@@ -30,7 +31,8 @@ class Card extends React.Component {
         }
     }
 
-    render() {
+    render () {
+        const userAge = getAge(this.props.user.birthday);
         return (
             <View style={styles.cardShadow}>
                 <View style={styles.card}>
@@ -38,7 +40,7 @@ class Card extends React.Component {
                         <Image style={styles.cardImage} source={{ uri: this.props.card.images[this.state.index] }} />
                     </TouchableWithoutFeedback>
                     <View style={styles.infoPill}>
-                        <Text style={styles.infoPillText}>{this.props.card.age} - {this.props.card.location}</Text>
+                        <Text style={styles.infoPillText}>{userAge} - {this.props.card.location}</Text>
                     </View>
                     <Text style={styles.header1}>{this.props.card.name}</Text>
                     <Text style={[styles.paragraph, styles.italic]}>{this.props.card.aboutMe}</Text>

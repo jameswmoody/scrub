@@ -1,6 +1,8 @@
 import * as firebase from 'firebase';
 import { ImagePicker, Permissions } from 'expo';
 import { RNS3 } from 'react-native-aws3';
+import { FB_KEY } from 'react-native-dotenv'
+
 import {
     Alert
 } from 'react-native';
@@ -13,13 +15,13 @@ export function login (user) {
             id: user.uid,
             photoUrl: `${user.photoURL}?height=500`,
             name: user.displayName,
-            age: 29,
+            birthday: user.birthday || ' ',
             aboutMe: '',
-            chats: '',
-            geocode: '',
+            chats: ' ',
+            geocode: ' ',
             images: [`${user.photoURL}?height=500`],
             notification: false,
-            show: false,
+            show: false, 
             report: false,
             swipes: {
                 [user.uid]: false
