@@ -7,7 +7,7 @@ export function getAge (birthday) {
     const today_year = today_date.getFullYear();
     const today_month = today_date.getMonth();
     const today_day = today_date.getDate();
-    const age = today_year - birth_year;
+    let age = today_year - birth_year;
 
     if (today_month < (birth_month - 1)) {
         age--;
