@@ -32,7 +32,7 @@ class Card extends React.Component {
     }
 
     render () {
-        const userAge = getAge(this.props.user.birthday);
+        const userAge = getAge(this.props.card.birthday);
         return (
             <View style={styles.cardShadow}>
                 <View style={styles.card}>

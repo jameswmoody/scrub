@@ -47,6 +47,10 @@ class Home extends React.Component {
 
     onSwipe = (card, direction) => {
         const like = direction === 'right';
+
+        if (like) {
+            this.checkMatch(card);
+        }
         firebase.database().ref(`cards/${this.props.user.id}/swipes`).update({ [card.id]: like });
     };
 
@@ -56,6 +60,27 @@ class Home extends React.Component {
 
     swipeRight () {
         this.swiper.swipeRight();
+    }
+
+    checkMatch (card) {
+        firebase.database().ref('cards/' + card.id + '/swipes/' + this.props.user.id).once('value', (snap) => {
+            if (snap.val() == true) {
+                const me = {
+                    id: this.props.user.id,
+                    photoUrl: this.props.user.photoUrl,
+                    name: this.props.user.name,
+                    aboutMe: this.props.user.aboutMe
+                };
+                const user = {
+                    id: card.id,
+                    photoUrl: card.photoUrl,
+                    name: card.name,
+                    aboutMe: card.aboutMe
+                };
+                firebase.database().ref('cards/' + this.props.user.id + '/chats/' + card.id).set({user: user});
+                firebase.database().ref('cards/' + card.id + '/chats/' + this.props.user.id).set({user: me});
+            }
+        });
     }
 
     render() {
@@ -93,9 +118,10 @@ class Home extends React.Component {
 }
 
 function mapStateToProps(state) {
+    const matchIDs = Object.keys(state.user.swipes || {});
     return {
         loggedIn: state.loggedIn,
-        cards: state.cards,
+        cards: state.cards.filter(c => c.id !== state.user.id && !matchIDs.includes(c.id)),
         user: state.user
     };
 }

@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
     // Element Styling
     main: {
         backgroundColor: PRIMARY_BACKGROUND_COLOR,
+        height: deviceHeight
     },
     container: {
         flex: 1,
@@ -79,6 +80,9 @@ const styles = StyleSheet.create({
     },
     italic: {
         fontStyle: 'italic'
+    },
+    bold: {
+        fontWeight: 'bold'
     },
     // Navigation
     iconMenu: {
@@ -155,6 +159,26 @@ const styles = StyleSheet.create({
         zIndex: -1,
         height: deviceHeight/2
     },
+    // Matches
+    matchList: {
+        backgroundColor: 'transparent',
+        marginBottom: 128
+    },
+    match: {
+        flexDirection:'row',
+        margin: 10,
+        marginTop: 0,
+        borderRadius: 15,
+        height: 140,
+        justifyContent: 'center',
+        backgroundColor: WHITE,
+        shadowOpacity: 0.1,
+        ...SHADOW_EFFECT
+    },
+    matchDiscription: {
+        padding: 0,
+        width: deviceWidth * .6
+    },
     // Profile
     profile: {
         backgroundColor: WHITE,
@@ -179,9 +203,9 @@ const styles = StyleSheet.create({
     },
     // Edit
     img: {
-        width: 90,
-        height: 90,
-        borderRadius: 45,
+        width: 70,
+        height: 70,
+        borderRadius: 35,
         margin: 10,
         backgroundColor: WHITE,
     },
