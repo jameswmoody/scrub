@@ -2,7 +2,6 @@ import React from 'react';
 import * as firebase from 'firebase';
 import { connect } from 'react-redux';
 import Swiper from 'react-native-deck-swiper'
-import Icon from 'react-native-vector-icons/FontAwesome';
 const Dimensions = require('Dimensions');
 const deviceWidth = Dimensions.get('window').width;
 
@@ -13,12 +12,7 @@ import styles from '../styles'
 
 import {
     Text,
-    Image,
-    View,
-    Button,
-    TouchableOpacity,
-    TouchableWithoutFeedback,
-    StyleSheet
+    View
 } from 'react-native';
 
 class Home extends React.Component {

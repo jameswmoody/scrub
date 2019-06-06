@@ -26,6 +26,8 @@ export default reducers = (state = {
         }
         case 'GET_CARDS':
             return { ...state, cards: action.payload }
+        case 'GET_MATCH':
+            return { ...state, match: action.payload }
         case 'UPLOAD_IMAGES': {
             return { ...state, user: { ...state.user, images: action.payload } }
         }

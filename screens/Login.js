@@ -33,7 +33,8 @@ class Login extends React.Component {
 
     login = async () => {
         const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync(FB_KEY, {
-            permissions: ['public_profile', 'user_birthday'],
+            // permissions: ['public_profile', 'user_birthday'],
+            permissions: ['public_profile'],
         });
         if (type === 'success') {
             const credential = await firebase.auth.FacebookAuthProvider.credential(token);

@@ -10,7 +10,7 @@ import {
 
 import { imageUpload, deleteImage, logout } from '../redux/actions';
 import { getAge } from '../redux/helpers';
-import styles from '../styles'
+import styles from '../styles';
 
 class Profile extends React.Component {
     deleteImage() {
@@ -22,7 +22,8 @@ class Profile extends React.Component {
     }
 
     render() {
-        const { navigate } = this.props.navigation;
+        const { navigation } = this.props;
+        const { navigate } = navigation;
         const userAge = getAge(this.props.user.birthday);
         return (
             <ScrollView style={[styles.main]} bounces={false}>

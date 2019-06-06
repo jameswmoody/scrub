@@ -1,7 +1,6 @@
 import * as firebase from 'firebase';
 import { ImagePicker, Permissions } from 'expo';
 import { RNS3 } from 'react-native-aws3';
-import { FB_KEY } from 'react-native-dotenv'
 
 import {
     Alert
@@ -57,6 +56,14 @@ export function getCards() {
                 items.push(item);
             });
             dispatch({ type: 'GET_CARDS', payload: items });
+        });
+    }
+}
+
+export function getMatch(matchID) {
+    return function (dispatch) {
+        firebase.database().ref(`cards/${matchID}`).once('value', (snap) => {
+            dispatch({ type: 'GET_MATCH', payload: snap.val() });
         });
     }
 }

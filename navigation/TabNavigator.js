@@ -7,6 +7,8 @@ import Home from '../screens/Home';
 import Profile from '../screens/Profile';
 import Edit from '../screens/Edit';
 import Matches from '../screens/Matches';
+import Chat from '../screens/Chat';
+import MatchProfile from '../screens/MatchProfile';
 import styles from '../styles'
 
 const ProfileStack = createStackNavigator ({
@@ -19,6 +21,23 @@ const ProfileStack = createStackNavigator ({
     Edit: Edit
 });
 
+const MatchesStack = createStackNavigator({
+    Matches: {
+        screen: Matches,
+        navigationOptions: {
+            header: null
+        }
+    },
+    Chat: {
+        screen: Chat,
+        navigationOptions: {
+            headerBackTitle: 'Chat'
+        }
+    },
+    MatchProfile: {
+        screen: MatchProfile
+    }
+});
 
 export default createBottomTabNavigator (
     {
@@ -51,7 +70,7 @@ export default createBottomTabNavigator (
             }
         },
         Matches: {
-            screen: Matches,
+            screen: MatchesStack,
             navigationOptions: {
                 tabBarIcon: ({ focused }) => {
                     const color = focused ? '#FFFFFF' : '#ae9eff';
@@ -63,7 +82,8 @@ export default createBottomTabNavigator (
                 },
                 tabBarLabel: 'Matches'
             },
-        }
+        },
+        // Chat: ChatStack
     },
     {
         navigationOptions: {
