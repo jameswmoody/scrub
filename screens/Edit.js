@@ -6,7 +6,6 @@ import styles from '../styles'
 import {
     Text,
     View,
-    ScrollView,
     Keyboard,
     TouchableOpacity,
     Image,

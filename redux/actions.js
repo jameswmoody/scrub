@@ -71,7 +71,7 @@ export function getMatch(matchID) {
 export function imageUpload (images) {
     function imageHandler(dispatch) {
         ImagePicker
-            .launchImageLibraryAsync({ allowsEditing: false })
+            .launchImageLibraryAsync({ allowsEditing: false, quality: 0.1 })
             .then(function (result) {
                 const array = images;
                 if (result.uri != undefined) {
