@@ -6,7 +6,7 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;_**(verb)**_
 
-&nbsp;&nbsp;&nbsp;&nbsp;_1. To rub hard so as to clean them, typically with a brush and water._
+&nbsp;&nbsp;&nbsp;&nbsp;_1. To rub hard so as to clean, typically with a brush and water._
 
 &nbsp;&nbsp;&nbsp;&nbsp;_**(adjective)**_
 
